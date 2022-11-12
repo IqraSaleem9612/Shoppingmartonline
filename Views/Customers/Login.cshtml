@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<h1 style="text-align:center; font-family:'Segoe MDL2 Assets'; font-size:xx-large"><b>Login </b></h1>
+<br />
+<h2 style="text-align: center; font-family: 'Segoe MDL2 Assets'; font-size:medium; color:dimgrey ">Please Enter Your Email and Password <i class="fa fa-lock"></i></h2>
+<br />
+@using (Html.BeginForm("Login", "Customers", FormMethod.Post))
+{
+@*<div class="container">
+    <center>
+        <form>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="CUSTOMER_EMAIL" required>
+            <br />
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="CUSTOMER_PASSWORD" required>
+            <br />
+            <input type="submit" value="Login" style="color:white; background-color:black"  />
+        </form>
+    </center>
+</div>*@
+    <center>
+        <table width="30%" height="100%" class="table-white" style="border-collapse: separate; border-spacing: 0 15px;">
+
+            <tr><th><b>Email</b></th><td><input name="CUSTOMER_EMAIL" type="text" required /></td></tr>
+            <tr><td><b>Password</b></td><td><input name="CUSTOMER_PASSWORD" type="password" required /></td></tr>
+            <tr><td style="color:red; font-size:large" colspan="2">@ViewBag.Message</td></tr>
+
+            <tr><td colspan="2"><input type="submit" value="Login" style="color:white; background-color:black" class=" btn-block" /></td></tr>
+        </table>
+    </center>
+
+    //#f8f9fa
+}
+<br />
+<center>Don't have an account?<a href="@Url.Action("Create","Customers")"> Create one <i class="fa fa-smile"></i></a></center>
+<br />
+<br />
+<br />
+<br />
+<br />

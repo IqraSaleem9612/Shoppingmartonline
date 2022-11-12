@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<h1 style="text-align:center; font-family:'Segoe MDL2 Assets'; font-size:xx-large"><b>Login</b></h1>
+<br />
+<h2 style="text-align: center; font-family: 'Segoe MDL2 Assets'; font-size:large; color:dimgrey ">Please Enter Your Email and Password <i class="fa fa-lock"></i></h2>
+<br />
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <center>
+        <table width="30%" height="100%" class="table-white" style="border-collapse: separate; border-spacing: 0 15px;">
+
+            <tr><td><b>Email</b></td><td><input name="ADMIN_EMAIL" type="text" required /></td></tr>
+            <tr><td><b>Password</b></td><td><input name="ADMIN_PASSWORD" type="password" required /></td></tr>
+            <tr><td style="color:red; font-size:large" colspan="2">@ViewBag.Message</td></tr>
+
+            <tr><td colspan="2"><input type="submit" value="Login" style="color:white; background-color:black" class=" btn-block btn-hover " /></td></tr>
+        </table>
+    </center>
+ 
+    //#f8f9fa
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

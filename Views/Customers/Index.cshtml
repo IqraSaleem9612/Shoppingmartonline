@@ -1,0 +1,83 @@
+﻿@model IEnumerable<OnlineShopeProject.Models.Customer>
+@using OnlineShopeProject.Models;
+
+@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    
+   
+    <div style="flex-basis:50px; padding:100px 100px 100px 100px; width:100%">
+        <h1 style="text-align: center; color: black;  font-family: 'Segoe MDL2 Assets'">Your Personal Information <i class="fas fa-book-open"></i></h1>
+        <hr />
+
+
+        @foreach (var item in Model)
+        {
+
+            if (Session["Customer"] != null)
+            {
+                Customer c = (Customer)Session["Customer"];
+                if (c.CUSTOMER_ID == item.CUSTOMER_ID)
+                {
+                    <dt>
+                        Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.CUSTOMER_NAME)
+                    </dd>
+                    <hr />
+                    <dt>
+                        Email
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.CUSTOMER_EMAIL)
+                    </dd>
+                    <hr />
+                    <dt>
+                        Address
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.CUSTOMER_ADDRESS)
+                    </dd>
+                    <hr />
+                    <dt>
+                        Contact
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.CUSTOMER_CONTACT)
+                    </dd>
+                    <hr />
+                    <dt>
+                        Password
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.CUSTOMER_PASSWORD)
+                    </dd>
+                    <hr />
+                    <dd>
+                        <h2 style=" font-family: 'Segoe MDL2 Assets'; font-size:medium; color:dimgrey ">If you want to edit your information please click here  <i class="fa fa-hand-point-down"></i></h2>
+                        <a class="btn btn-dark fas fa-user-edit" href="@Url.Action("Edit","Customers",new { id=item.CUSTOMER_ID })"></a>
+                    </dd>
+                    <h2 style=" font-family: 'Segoe MDL2 Assets'; font-size:medium; color:dimgrey ">If you want to Delete your account please click here  <i class="fa fa-hand-point-down"></i></h2>
+                    <a class="btn btn-dark fa fa-trash" href="@Url.Action("Delete","Customers",new { id=item.CUSTOMER_ID })"></a>
+
+
+                }
+            }
+        }
+
+    </div>
+   
+</body>
+</html>

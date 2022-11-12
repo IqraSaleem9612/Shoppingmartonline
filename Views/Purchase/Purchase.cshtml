@@ -1,0 +1,83 @@
+﻿@model OnlineShopeProject.Models.ShopModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Manage Purchase</h2>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Shop Page  -->
+<div class="shop-box-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+                <div class="product-categori">
+                    <div class="search-product">
+                        
+                    </div>
+                    <div class="filter-sidebar-left">
+                        <div class="title-left">
+                            <h3>Categories</h3>
+                        </div>
+                        <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                            @foreach (var c in Model.Cat)
+                            {
+                            <a href="@Url.Action("Purchase","Purchase",new {id=c.CATEGORY_ID} )" class="list-group-item list-group-item-action">@c.CATEGORY_NAME <small class="text-muted">(@c.Products.Count )</small></a>
+                            }
+                        
+                        </div>
+                    </div>
+                  
+
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12 shop-content-right">
+                <div class="right-product-box">
+                   <div class="row product-categorie-box">
+                        <div class="tab-content">
+                            <div>
+                                <div class="row">
+                                    @foreach (var p in Model.Pro)
+                                    {
+                                    <div class=" table-bordered col-md-12 col-lg-6 col-xl-6">
+                                        <div class="products-single fix">
+                                            <div class="box-img-hover">
+                                                <div class="type-lb">
+                                                    <center><h3 class="sale">@p.PRODUCT_NAME</h3></center>
+                                                </div>
+                                                <img src="@Url.Content(p.PRODUCT_PICTURE)" style="height:270px;width:260px" alt="Image">
+
+                                            </div>
+                                            <div class="why-text btn-block">
+                                                
+                                                <h5 style="text-align:center">Rs.@p.PRODUCT_PURCHASEPRICE</h5>
+                                            </div>
+                                            <div class="mask-icon">
+
+                                                <a class="btn btn-danger btn-block" href="@Url.Action("AddToCart","Purchase", new {id=p.PRODUCT_ID })">Add to Stock</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Shop Page -->

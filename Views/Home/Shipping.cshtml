@@ -1,0 +1,66 @@
+﻿@using OnlineShopeProject.Models
+@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+@using (Html.BeginForm("PayNow", "Home"))
+{
+<div class="row my-5" style=" padding:100px 100px 100px 100px;">
+
+
+    <div class="col-lg-6 col-sm-12">
+        @if (Session["Customer"] != null)
+        {
+            Customer c = (Customer)Session["Customer"];
+
+
+            <div class="order-box">
+                <h1><b>Shipping Address</b></h1>
+                <div class="d-flex">
+                    <input name="ORDER_NAME" type="text" value="@c.CUSTOMER_NAME" required placeholder="Enter Name" class="form-control" />
+                </div>
+
+                <br />
+
+                <div class="d-flex">
+                    <input name="ORDER_CONTACT" type="text" value="@c.CUSTOMER_CONTACT" required placeholder="Enter Contact " class="form-control" />
+                </div>
+                <br />
+                <div class="d-flex">
+                    <input name="ORDER_EMAIL" type="text" value="@c.CUSTOMER_EMAIL" required placeholder="Enter Email" class="form-control form-check" />
+                </div>
+                <br />
+                <div class="d-flex">
+                    <textarea name="ORDER_ADDRESS" type="text" required placeholder="Enter Address" class="form-control">@c.CUSTOMER_ADDRESS</textarea>
+                </div>
+                <hr>
+                <div class="d-flex">
+                    <h4>Payment Mode:</h4>
+                    <div class="ml-auto font-weight-bold">
+                        <input type="checkbox" value="Cash on Delivery" name="ORDER_STATUS" checked="checked" /> Cash on Delivery
+                        @*<br />
+                            <input type="radio" value="Paid" name="ORDER_STATUS" /> Pay with Paypal*@
+
+                    </div>
+                </div>
+                <hr />
+                <div style="color:red; font-family:'Lucida Console'"> Note: Please Provide Valid Data</div>
+                <hr>
+
+            </div>
+        }
+        else
+        {
+            Response.Redirect("/Customers/Create");
+        }
+    </div>
+    @if (Session["myCart"] != null)
+    {
+        <div class="col-12 d-flex shopping-box">
+            <input type="submit" class=" btn btn-dark " style="color:white;" value="Checkout">
+        </div>
+    }
+
+</div>
+}
+

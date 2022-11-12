@@ -1,0 +1,60 @@
+﻿@using OnlineShopeProject.Models
+@{ 
+    Model4 db = new Model4();
+}
+                <hr />
+                <div class="row" style="background-color:#f8f9fa">
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="panel panel-back noti-box" style="border-radius:70px; background-color:rgb(252 247 0 / 0.88);">
+                            <span class="icon-box bg-color-red set-icon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <div class="text-box">
+                                <a href="@Url.Action("Index","Admins")" style="color:#ff6a00;">
+                                    <p class="main-text">@db.Admins.Count() Admin</p>
+                                </a>
+                                    <p class="text-muted" style="color:black"> Accounts</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="panel panel-back noti-box" style="border-radius:70px; background-color:#00ff90;">
+                            <span class="icon-box bg-color-green set-icon">
+                                <i class="fa fa-shopping-cart"></i>
+                            </span>
+                            <div class="text-box">
+                                <a href="@Url.Action("Index","Products")" style="color:#ff6a00;">
+                                    <p class="main-text">@db.Products.Count() Product</p>
+                                </a>
+                                    <center> <p class="text-muted" style="color:black">For Sale</p></center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="panel panel-back noti-box" style="border-radius:70px; background-color:#b6ff00;">
+                            <span class="icon-box bg-color-blue set-icon">
+                                <i class="fa fa-money"></i>
+                            </span>
+                            <div class="text-box">
+                                <p class="main-text">@db.OrderDetails.Where(x=>x.Order.ORDER_TYPE=="Sale").Sum(x=>(x.SALE_PRICE * x.QUANTITY)*-1)</p>
+                                <a href="@Url.Action("ProfitandLossReport","Reports")"> <p class="text-muted" style="color:black">Your Earnings So Far</p> </a>
+</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="panel panel-back noti-box" style="border-radius:70px; background-color:#ff6a00;">
+                            <span class="icon-box bg-color-brown set-icon"> 
+                                <i class="fa fa-rocket"></i>
+                            </span>
+                            <div class="text-box">
+                                <a href="@Url.Action("SaleReport","Reports")" style="color:#ffd800;">
+                                    <p class="main-text">@db.Orders.Where(x => x.ORDER_TYPE == "Sale").Count()</p></a>
+                                    <p class="text-muted" style="color:black">Sale Order</p>
+</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <hr />
+              

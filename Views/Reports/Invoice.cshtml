@@ -1,0 +1,181 @@
+﻿@using OnlineShopeProject.Models;
+@{
+    Model4 db = new Model4();
+    ViewBag.Title = "Invoice";
+}
+
+<head>
+    <style>
+        .para {
+            line-height: 20px;
+            max-height: 100px; /* line-height * 3 */
+            overflow: hidden;
+        }
+    </style>
+</head>
+<div id="printArea">
+    <div style="overflow-x:auto;">
+        <table width="100%">
+            <tr>
+                <td width="33%" rowspan="3"><img src="@Url.Content(db.Companies.Select(x=>x.COMPANY_LOGO).FirstOrDefault())" height="80px" width="180px" /></td>
+                <td width="33%"></td>
+                <td width="33%"><b>Email: </b>@db.Companies.Select(x => x.COMPANY_EMAIL).FirstOrDefault()</td>
+            </tr>
+            <tr>
+
+                <td></td>
+                <td><b>Address: </b>@db.Companies.Select(x => x.COMPANY_ADDRESS).FirstOrDefault()</td>
+            </tr>
+            <tr>
+
+                <td></td>
+                <td><b>Contact: </b>@db.Companies.Select(x => x.COMPANY_CONTACT).FirstOrDefault()</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <center><h2 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:black">Order Invoice</h2></center>
+    <br />
+
+    @foreach (var o in Model)
+    {
+        <div style="overflow-x:auto;">
+
+            <table class="table table-responsive table-hover ">
+                <tr>
+                    <td align="center" style="font-size: large; background-color: black; color: white" colspan="4">Order Detail</td>
+                </tr>
+
+                <tr>
+                    <td>Order Number</td>
+                    <th>@o.ORDER_ID</th>
+                    <td>Person Name</td>
+                    <th>@o.ORDER_NAME</th>
+                </tr>
+                <tr>
+                    <td>Order Date</td>
+                    <th>@o.ORDER_DATE</th>
+                    <td>Email</td>
+                    <th>@o.ORDER_EMAIL</th>
+                </tr>
+                <tr>
+                    <td>Order Status</td>
+                    <th>@o.ORDER_STATUS</th>
+                    <td>Contact Number</td>
+                    <th>@o.ORDER_CONTACT</th>
+                </tr>
+                <tr>
+                    <td>Order Type</td>
+                    <th>@o.ORDER_TYPE</th>
+                    <td>Address</td>
+                    <th>@o.ORDER_ADDRESS</th>
+                </tr>
+
+            </table>
+
+        </div>
+
+        double totalAmount = 0;
+        int totalQty = 0;
+        <br />
+
+        <div style="overflow-x:auto;">
+            <table class="table table-responsive table-bordered">
+                <tr>
+                    <td align="center" style="font-size: large; background-color:black; color: white" colspan="6">Product Detail</td>
+                </tr>
+                <tr style="font-size:large; background-color:black; color:white">
+                    <th>Product Picture</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th>Product Price</th>
+                    <th>Product Quantity</th>
+                    <th>Product Amount</th>
+                </tr>
+
+                @foreach (var od in o.OrderDetails)
+                {
+                    <tr>
+                        <td><img height="100px" width="130px" src="@Url.Content(od.Product.PRODUCT_PICTURE)"></td>
+                        <td>@od.Product.PRODUCT_NAME</td>
+                        <td>
+                            <p class="para">
+                                @od.Product.PRODUCT_DESCRIPTION
+                            </p>
+                        </td>
+
+
+
+                        <td>
+                            @if (o.ORDER_TYPE == "Purchase")
+                            {
+                                @od.PURCHASE_PRICE
+                            }
+                            else
+                            {
+                                @od.SALE_PRICE
+                            }
+                        </td>
+                        <td>@Math.Abs(Convert.ToInt32(od.QUANTITY))</td>
+                        <td>
+                            @if (o.ORDER_TYPE == "Purchase")
+                            {
+                                @(double.Parse(od.PURCHASE_PRICE.ToString()) * Math.Abs(int.Parse(od.QUANTITY.ToString())));
+                            }
+                            else
+                            {
+                                @(double.Parse(od.SALE_PRICE.ToString()) * Math.Abs(int.Parse(od.QUANTITY.ToString())));
+                            }
+                        </td>
+                    </tr>
+                    totalQty += Math.Abs(int.Parse(od.QUANTITY.ToString()));
+
+
+                    if (o.ORDER_TYPE == "Purchase")
+                    {
+                        totalAmount += (double.Parse(od.PURCHASE_PRICE.ToString()) * Math.Abs(int.Parse(od.QUANTITY.ToString())));
+                    }
+                    else
+                    {
+                        totalAmount += (double.Parse(od.SALE_PRICE.ToString()) * Math.Abs(int.Parse(od.QUANTITY.ToString())));
+                    }
+
+                }
+
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@totalQty</td>
+                    <td>@totalAmount</td>
+
+
+                </tr>
+
+
+            </table>
+            </div>
+            }
+        </div>
+        <input align="center" type="button" onclick="return PrintFunction();" value="Print Report" class=" btn btn-danger"/>
+
+
+        <script type="text/javascript">
+            function PrintFunction() {
+                var print = document.getElementById('printArea');
+                var printWindow = window.open('', '', 'height=400,width=800');
+                printWindow.document.write('<html><head><title>DIV Content</title>');
+                printWindow.document.write('</head><body>');
+                printWindow.document.write(print.innerHTML);
+                printWindow.document.write('</body ></html>');
+                printWindow.document.close();
+                setTimeout(function () {
+                    printWindow.print();
+                }, 500);
+                return false;
+            }
+
+        </script>

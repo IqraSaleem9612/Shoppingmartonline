@@ -1,0 +1,57 @@
+﻿@using OnlineShopeProject.Models;
+
+@{
+    int no = 0;
+    Model4 db = new Model4();
+    Customer c = (Customer)Session["Customer"];
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+    ViewBag.Title = "Cancelled Order";
+
+}
+<br />
+
+<center><h2 style="color: black; font-family: 'Segoe MDL2 Assets'">Your Cancelled Orders <i class=" fa fa-close" style=" font-size:36px"></i></h2></center>
+<br />
+<br />
+<table class="table table-bordered  table-responsive-sm  ">
+
+
+    @foreach (var o in db.Orders.Where(x => x.STATUS == "Cancelled"))
+    {
+        no++;
+        if (o.CUSTOMER_FID == c.CUSTOMER_ID)
+        {
+            <tr>
+
+                <th style="background-color:black; color:white">Order #</th>
+                <td>@o.ORDER_ID</td>
+                <th>Name</th>
+                <td>@o.ORDER_NAME</td>
+            </tr>
+            <tr>
+                <th>Payment Type</th>
+                <td>@o.ORDER_STATUS</td>
+                <th>Current Status</th>
+                <td>@o.STATUS</td>
+
+            </tr>
+
+            <tr>
+                <th>Address</th>
+                <td colspan="3">@o.ORDER_ADDRESS</td>
+
+            </tr>
+            <tr style=" border-spacing: 0 15px;">
+                <th>Action</th>
+                <td><a href="@Url.Action("OrderActivate","Customers", new {id=o.ORDER_ID})" class="btn btn-dark">Active Again</a></td>
+                <td colspan="2"><a href="@Url.Action("Invoice","Customers", new {id=o.ORDER_ID})" class="btn btn-dark">View Invoice</a></td>
+            </tr>
+            <tr height="100px">
+                <th colspan="4"></th>
+            </tr>
+        }
+    }
+
+</table>
+@*<td align="center"><a href="@Url.Action("OrderActivate","Customers", new {id=o.ORDER_ID})" class="btn btn-success">Activate Again</a></td>
+    <td align="center"><a href="@Url.Action("Invoice","Customers", new {id=o.ORDER_ID})" class="btn btn-success">View Invoice</a></td>*@

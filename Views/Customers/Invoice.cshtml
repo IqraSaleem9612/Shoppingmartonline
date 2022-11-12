@@ -1,0 +1,146 @@
+﻿@using OnlineShopeProject.Models;
+@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+    Model4 db = new Model4();
+    ViewBag.Title = "Invoice Customer";
+}
+<br />
+<br />
+
+    <div id="printArea">
+
+
+        <center><h1  style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:black" >Order Invoice</h1></center>
+        <br />
+
+        @foreach (var o in Model)
+        {
+            <table class="table  table-hover " width="100%">
+                <tr width="100%">
+                    <td  align="center" style="font-size: large; background-color:black; color: white" colspan="4">Shipping Details</td>
+                </tr>
+
+                <tr>
+                    <th>Order Number</th>
+                    <td>@o.ORDER_ID</td>
+                    <th>Person Name</th>
+                    <td>@o.ORDER_NAME</td>
+                </tr>
+                <tr>
+                    <th>Order Date</th>
+                    <td>@o.ORDER_DATE</td>
+                    <th>Email</th>
+                    <td>@o.ORDER_EMAIL</td>
+                </tr>
+                <tr>
+                    <th>Payment Type</th>
+                    <td>@o.ORDER_STATUS</td>
+                    <th>Contact Number</th>
+                    <td>@o.ORDER_CONTACT</td>
+                </tr>
+                <tr>
+      
+                    <th>Address</th>
+                    <td colspan="3">@o.ORDER_ADDRESS</td>
+                </tr>
+
+            </table>
+
+            double totalAmount = 0;
+            int totalQty = 0;
+            <br />
+            <table class="table  ">
+                <tr>
+                    <td align="center" style="font-size: large; background-color:black; color: white" colspan="6">Product Details</td>
+                </tr>
+                <tr style="font-size:large;">
+                    <th>Product Picture</th>
+                    <th>Product Name</th>
+                   
+                    <th> Price</th>
+                    <th> Quantity</th>
+                    <th>Total Amount</th>
+                </tr>
+
+                @foreach (var od in o.OrderDetails)
+                {
+                    <tr>
+                        <td><img height="100px" width="130px" src="@Url.Content(od.Product.PRODUCT_PICTURE)"></td>
+                        <td>@od.Product.PRODUCT_NAME</td>
+                       
+
+
+                        <td>
+                            @if (o.ORDER_TYPE == "Purchase")
+                            {
+                                @od.PURCHASE_PRICE
+                            }
+                            else
+                            {
+                                @od.SALE_PRICE
+                            }
+                        </td>
+                        <td>@Math.Abs(Convert.ToInt32(od.QUANTITY))</td>
+                        <td>
+                            @if (o.ORDER_TYPE == "Purchase")
+                            {
+                                @(double.Parse(od.PURCHASE_PRICE.ToString()) * Math.Abs(int.Parse(od.QUANTITY.ToString())));
+                            }
+                            else
+                            {
+                                @(double.Parse(od.SALE_PRICE.ToString()) * Math.Abs(int.Parse(od.QUANTITY.ToString())));
+                            }
+                        </td>
+                    </tr>
+                    totalQty += Math.Abs(int.Parse(od.QUANTITY.ToString()));
+
+
+                    if (o.ORDER_TYPE == "Purchase")
+                    {
+                        totalAmount += (double.Parse(od.PURCHASE_PRICE.ToString()) * Math.Abs(int.Parse(od.QUANTITY.ToString())));
+                    }
+                    else
+                    {
+                        totalAmount += (double.Parse(od.SALE_PRICE.ToString()) * Math.Abs(int.Parse(od.QUANTITY.ToString())));
+                    }
+
+                }
+
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                   
+                    <td>@totalQty</td>
+                    <td>@totalAmount</td>
+
+
+                </tr>
+
+
+            </table>
+        }
+
+    </div>
+
+<input align="center" type="button" onclick="return PrintFunction();" value="Print Report" class=" btn btn-dark " />
+     <br />
+<br />       
+
+<script type="text/javascript">
+    function PrintFunction() {
+        var print = document.getElementById('printArea');
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>DIV Content</title>');
+        printWindow.document.write('</head><body>');
+        printWindow.document.write(print.innerHTML);
+        printWindow.document.write('</body ></html>');
+        printWindow.document.close();
+        setTimeout(function () {
+            printWindow.print();
+        }, 500);
+        return false;
+    }
+
+</script>

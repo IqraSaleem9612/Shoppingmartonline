@@ -1,0 +1,98 @@
+﻿@model  IEnumerable<OnlineShopeProject.Models.Order>
+
+@{
+    int no = 0;
+    ViewBag.Title = "Profit & Loss Report";
+}
+<div id="printArea">
+
+    <center><h2 style="color:red; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Profit & Loss Report</h2></center>
+    @{decimal? NetProfit = 0; }
+
+
+    @using (Html.BeginForm("ProfitandLossReport", "Reports", FormMethod.Post))
+    {
+        <div style="overflow-x:auto;">
+            <table class="table table-bordered table-danger">
+                <tr>
+                    <td>Date From:</td>
+                    <td><input type="datetime-local" name="DateFrom" value="@ViewBag.DateFrom" class="form-control" /></td>
+                    <td>Date To:</td>
+                    <td><input type="datetime-local" name="DateTo" value="@ViewBag.DateTo" class="form-control" /></td>
+                    <td><input type="submit" id="btn1" value="Generate Report" class=" btn btn-danger btn-block" /></td>
+                </tr>
+                <tr>
+                    <td>Category:</td>
+                    <td>@Html.DropDownList("Category", ViewBag.Category as SelectList, "Select Category", htmlAttributes: new { @class = "form-control" })</td>
+                    <td>Product:</td>
+                    <td>@Html.DropDownList("Product", ViewBag.Product as SelectList, "Select Product", htmlAttributes: new { @class = "form-control" })</td>
+                    <td><input type="button" id="btn2" onclick="return PrintFunction();" value="Print Report" class=" btn btn-danger btn-block" /></td>
+                </tr>
+            </table>
+        </div>
+    }
+    <div style="overflow-x:auto;">
+        <table class="table table-bordered table-danger">
+            <tr style="background-color:black; color:white">
+                <th>Serial #</th>
+                <th>Order Number</th>
+                <th>Order Date</th>
+                <th>Customer Name</th>
+                <th>Order Sale Cost</th>
+                <th>Order Purchase Cost</th>
+                <th>Gross Profit & Loss</th>
+                <th>Action</th>
+            </tr>
+            @foreach (var o in Model)
+            {
+                no++;
+                <tr>
+                    <td align="center">@no</td>
+                    <td align="center">Order # @o.ORDER_ID</td>
+                    <td align="center">@DateTime.Parse(o.ORDER_DATE.ToString()).ToLongDateString()</td>
+                    <td align="center">@o.ORDER_NAME</td>
+                    <td align="center">@o.OrderDetails.Sum(x => x.SALE_PRICE * Math.Abs(Convert.ToInt32(x.QUANTITY)))</td>
+                    <td align="center">@o.OrderDetails.Sum(x => x.PURCHASE_PRICE * Math.Abs(Convert.ToInt32(x.QUANTITY)))</td>
+                    <td align="center">@(o.OrderDetails.Sum(x => x.SALE_PRICE * Math.Abs(Convert.ToInt32(x.QUANTITY)))- o.OrderDetails.Sum(x => x.PURCHASE_PRICE * Math.Abs(Convert.ToInt32(x.QUANTITY))))</td>
+
+                    <td align="center"><a href="@Url.Action("Invoice","Reports", new {id=o.ORDER_ID})" class="btn btn-dark">View Invoice</a></td>
+                </tr>
+                NetProfit += (o.OrderDetails.Sum(x => x.SALE_PRICE * Math.Abs(Convert.ToInt32(x.QUANTITY))) - o.OrderDetails.Sum(x => x.PURCHASE_PRICE * Math.Abs(Convert.ToInt32(x.QUANTITY))));
+
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="background-color:black; color:white">Net Profit or Loss</td>
+                <td>@NetProfit</td>
+                <td></td>
+            </tr>
+
+        </table>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        function PrintFunction() {
+            var print = document.getElementById('printArea');
+            var b1 = document.getElementById('btn1');
+            var b2 = document.getElementById('btn2');
+            b1.style.display = 'none';
+            b2.style.display = 'none';
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title>DIV Content</title>');
+            printWindow.document.write('</head><body>');
+            printWindow.document.write(print.innerHTML);
+            printWindow.document.write('</body ></html>');
+            printWindow.document.close();
+            setTimeout(function () {
+                printWindow.print();
+            }, 500);
+
+            b1.style.display = 'block';
+            b2.style.display = 'block';
+            return false;
+        }
+    </script>

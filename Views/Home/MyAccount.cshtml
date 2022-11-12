@@ -1,0 +1,96 @@
+﻿@using OnlineShopeProject.Models
+
+@{ Model4 db = new Model4();}
+
+@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "MyAccount";
+}
+
+<!-- Start All Title Box -->
+
+<!-- End All Title Box -->
+<!-- Start My Account  -->
+<div class="my-account-box-main">
+    <div class="container">
+        <div class="my-account-page">
+            <div class="row">
+                @if (Session["Customer"] != null)
+                {
+                    <div class="col-lg-4 col-md-12">
+                        <div class="account-box">
+                            <div class="service-box">
+                                <div class="service-icon">
+
+                                    <a href="@Url.Action("CustomerHistory", "Customers")"> <i class="fa fa-gift"></i> </a>
+                                </div>
+
+
+                                <div class="service-desc">
+                                    <h4> Order History</h4>
+                                    <p>Track your orders and view Invoice buy things again</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="account-box">
+                            <div class="service-box">
+                                <div class="service-icon">
+                                    <a href="@Url.Action("Index","Customers")"><i class="fa fa-lock"></i> </a>
+                                </div>
+                                <div class="service-desc">
+                                    <h4>Manage Account</h4>
+                                    <p>Edit name, Password, Email and mobile number</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="account-box">
+                            <div class="service-box">
+                                <div class="service-icon">
+                                    <a href="@Url.Action("CancelledOrder","Customers")"> <i class="fa fa-location-arrow"></i> </a>
+                                </div>
+                                <div class="service-desc">
+                                    <h4>Cancelled Orders</h4>
+                                    <p>See your cancelled Orders And Activate them if you want </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                else
+                { 
+            
+                <div class="col-lg-12 col-md-12" style="align-content:center">
+                    <div class="account-box">
+                        <div class="service-box">
+                            <div class="service-icon">
+                                <a href="@Url.Action("Login","Customers")"><i class="fa fa-lock"></i> </a>
+                            </div>
+                            <div class="service-desc">
+                                <h4>Login Here</h4>
+                                <p>Login Here to see your login Info and Track Your data</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+                }
+
+
+
+                <!-- End My Account -->
+
+
+            </div>
+         </div>
+     </div>
+</div>

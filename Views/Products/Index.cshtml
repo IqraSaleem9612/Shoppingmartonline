@@ -1,0 +1,90 @@
+﻿@model IEnumerable<OnlineShopeProject.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <style>
+        .para {
+            line-height: 20px;
+            max-height: 100px; /* line-height * 3 */
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-danger  btn-lg" href="@Url.Action("Create","Products")">Add New Products</a>
+   
+</p>
+<div style="overflow-x:auto;">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                PICTURE1
+            </th>
+            <th>
+                PICTURE2
+            </th>
+            <th>
+                PICTURE3
+            </th>
+            <th>
+                PRODUCT NAME
+            </th>
+            <th width="200px">
+                PRODUCT DESCRIPTION
+            </th>
+            <th>
+                PURCHASE PRICE
+            </th>
+            <th>
+                PRODUCT SALEPRICE
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img height="100px" width="100px" src="@Url.Content(item.PRODUCT_PICTURE)" />
+                </td>
+                <td>
+                    <img height="100px" width="100px" src="@Url.Content(item.PRODUCT_PICTURE2)" />
+                </td>
+                <td>
+                    <img height="100px" width="100px" src="@Url.Content(item.PRODUCT_PICTURE3)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCT_NAME)
+                </td>
+                <td>
+                    <p class="para">
+                        @Html.DisplayFor(modelItem => item.PRODUCT_DESCRIPTION)
+                    </p>
+                    <a href="@Url.Action("Details","Products",new { id=item.PRODUCT_ID })">Learn More</a>
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCT_PURCHASEPRICE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCT_SALEPRICE)
+                </td>
+
+                <td>
+                    <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","Products",new { id=item.PRODUCT_ID })"></a> |
+                    <a class="btn btn-success glyphicon glyphicon-book" href="@Url.Action("Details","Products",new { id=item.PRODUCT_ID })"></a> |
+                    <a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete","Products",new { id=item.PRODUCT_ID })"></a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    </div>

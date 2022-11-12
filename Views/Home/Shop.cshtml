@@ -1,0 +1,155 @@
+﻿@model OnlineShopeProject.Models.ShopModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<!-- Start All Title Box -->
+
+<!-- End All Title Box -->
+<!-- Start Shop Page  -->
+<div class="container" style="padding: 15px;" >
+    <div class="search-product">
+        <form action="#">
+            <input id="find" class="form-control" placeholder="Search using different keywords....." type="text" onkeyup="search()">
+            <button type="submit"> <i class="fa fa-search"></i> </button>
+            
+           
+        </form>
+    </div>
+</div>
+<div class="shop-box-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+                <div class="product-categori">
+
+                    <div class="filter-sidebar-left">
+                        <div class="title-left">
+                            <h3>Categories</h3>
+                        </div>
+                        <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                            @foreach (var c in Model.Cat)
+                            {
+                                <a href="@Url.Action("Shop","Home",new {id=c.CATEGORY_ID} )" class="list-group-item list-group-item-action">@c.CATEGORY_NAME <small class="text-muted">(@c.Products.Count )</small></a>
+                            }
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                <div class="right-product-box">
+
+                    @*<div class="product-item-filter row">
+                            <div class="col-12 col-sm-8 text-center text-sm-left">
+                                <div class="toolbar-sorter-right">
+                                    <span>Sort by </span>
+                                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                                        <option data-display="Select">Nothing</option>
+                                        <option value="1">Popularity</option>
+                                        <option value="2">High Price → High Price</option>
+                                        <option value="3">Low Price → High Price</option>
+                                        <option value="4">Best Selling</option>
+                                    </select>
+                                </div>
+                                <p>Showing all results</p>
+                            </div>
+                            <div class="col-12 col-sm-4 text-center text-sm-right">
+                                <ul class="nav nav-tabs ml-auto">
+                                    <li>
+                                        <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i class="fa fa-th"></i> </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>*@
+
+                    <div class="row product-categorie-box" id="product-list">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                <div class="row">
+                                    @foreach (var p in Model.Pro)
+                                    {
+                                        <div class="col-xs-6 col-sm-6 col-md-6  col-lg-4 col-xl-4">
+                                            <div class="products-single fix">
+                                                <div class="box-img-hover">
+                                                    <div class="type-lb">
+                                                        <a class="sale" style="background-color:black; opacity:0.9;" href="@Url.Action("ProductDetail","Home", new {id=p.PRODUCT_ID})"> View Detail </a>
+
+                                                    </div>
+
+                                                    <img src="@Url.Content(p.PRODUCT_PICTURE)" style="height:270px;width:260px" alt="Image">
+
+
+
+                                                    <div class="mask-icon">
+                                                        <ul>
+                                                            <li><a style="background-color:white" href="#" data-toggle="tooltip" data-placement="right" title="Available : @Math.Abs(Convert.ToInt32(p.OrderDetails.Sum(x=>x.QUANTITY)))"><i style="color:black" class="fa fa-cart-plus"></i></a></li>
+                                                          
+                                                        </ul>
+
+                                                        @*@if (p.OrderDetails.Sum(x => x.QUANTITY) > 0)
+                                                        {*@
+                                                            <a class="cart" style="background-color:black" href="@Url.Action("AddToCart","Home", new {id=p.PRODUCT_ID })">Add to Cart</a>
+                                                        @*}
+                                                        else
+                                                        {
+                                                            <a class="cart">Out Of Stock</a>
+                                                        }*@
+
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="why-text  ">
+
+
+                                                    <h5 style="text-align:center; height:40px;  color:black;">@p.PRODUCT_NAME</h5>
+
+                                                    <h5 style="text-align:center; color:red">  Rs.@p.PRODUCT_SALEPRICE</h5>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*for search filter*@
+
+<script type="text/javascript">
+    function search() {
+        let filter = document.getElementById('find').value.toUpperCase();
+        let item = document.querySelectorAll('.products-single');
+        let l = document.getElementsByTagName('h5');
+       
+
+        for (var i = 0; i <= l.length; i++) {
+            let a = item[i].getElementsByTagName('h5')[0];
+            let value = a.innerHTML || a.innerText || a.textContent;
+
+            if (value.toUpperCase().indexOf(filter) > -1) {
+                item[i].style.display = "";
+            }
+            else {
+                item[i].style.display = "none";
+            }
+
+        }
+
+    }
+</script>
+<!--    End Shop Page-- >

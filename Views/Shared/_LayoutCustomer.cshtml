@@ -1,0 +1,287 @@
+﻿@using OnlineShopeProject.Models
+
+@{ Model4 db = new Model4();}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Online Shopping Mart</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="~/Content/Customer/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/Content/Customer/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/Customer/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/Content/Customer/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Content/Customer/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/Customer/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   
+
+</head>
+
+<body>
+
+    <!-- Start Main Top -->
+    <div class="main-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="text-slid-box">
+                        <div id="offer-box" class="carouselTicker">
+                            <ul class="offer-box">
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 30%! Shop Now bags
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 38% - 50% off on Jewellery
+<li>
+                                    <i class="fab fa-opencart"></i> 50% off on kids accessaries
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now Kids
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 38% - 50% off on Jewellery
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 38% on entire products
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                   
+                    <div class="right-phone-box">
+                        <p>Call US :- <a href="#"> @db.Companies.Select(x=>x.COMPANY_CONTACT).FirstOrDefault()</a></p>
+                    </div>
+                    <div class="our-link">
+                        <ul>
+                            <li><a target="_blank" href="https://www.google.com/search?sa=X&rlz=1C1ONGR_enPK1018PK1018&sxsrf=ALiCzsZ8N9R3QicSKUN2MFnVL0kaagFzdA:1665255818433&q=ahmad%20plastic%20center%20gujranwala&ved=2ahUKEwip4ZGsqdH6AhWMX_EDHYINA4QQvS56BAgJEAE&biw=1366&bih=568&dpr=1&tbs=lf:1,lf_ui:2&tbm=lcl&rflfq=1&num=10&rldimm=2781810397588933051&lqi=Ch9haG1hZCBwbGFzdGljIGNlbnRlciBndWpyYW53YWxhSNaklP2Xr4CACFo3EAAQARACGAAYARgCGAMiH2FobWFkIHBsYXN0aWMgY2VudGVyIGd1anJhbndhbGEqBggCEAAQAZIBD3Nob3BwaW5nX2NlbnRlcqoBFRABKhEiDWFobWFkIHBsYXN0aWMoAA&rlst=f#rlfi=hd:;si:2781810397588933051,l,Ch9haG1hZCBwbGFzdGljIGNlbnRlciBndWpyYW53YWxhSNaklP2Xr4CACFo3EAAQARACGAAYARgCGAMiH2FobWFkIHBsYXN0aWMgY2VudGVyIGd1anJhbndhbGEqBggCEAAQAZIBD3Nob3BwaW5nX2NlbnRlcqoBFRABKhEiDWFobWFkIHBsYXN0aWMoAA;mv:[[32.4637482,74.21860079999999],[32.0804913,73.9779226]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2">Our location</a></li>
+                            <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Top -->
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="@Url.Action("IndexCustomer","Home")"><img  src="@Url.Content(db.Companies.Select(x=>x.COMPANY_LOGO).FirstOrDefault())" class="logo" height="82px" width="200px" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="@Url.Action("IndexCustomer","Home")">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("About","Home")">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Shop","Home")">Product</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact","Home")">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("MyAccount","Home")">My Account</a></li>
+                        <li class="dropdown">
+                            @if (Session["Customer"] == null)
+                            {
+                                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Sign up </a>
+                                <ul class="dropdown-menu">
+
+                                    <li><a href="@Url.Action("Create","Customers")">Create Account</a></li>
+                                    <li><a href="@Url.Action("Login","Customers")">Login <i class="fa fa-sign-in"></i></a></li>
+                                </ul>
+                            }
+                            else
+                            {
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Logout","Customers")">Logout  <i class="fa fa-sign-out"></i></a></li>
+                            }
+
+
+                            </li>
+                        </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search"><a href="@Url.Action("Login","Customers")"><i class="fa fa-user"></i></a></li>
+                        <li class="side-menu">
+                            <a href="@Url.Action("Cart","Home")">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="badge">
+                                    @if(Session["myCart"]!=null)
+                                    {
+                                        List<Product> list= (List < Product >) Session["myCart"];
+                                        @list.Count();
+                                    }
+                                </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation --
+            </div>
+            <!-- Start Side Menu -->
+            <div class="side">
+                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                <li class="cart-box">
+                    <ul class="cart-list">
+                        <li>
+                            <a href="#" class="photo"><img src="~/Content/Customer/images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Delica omtantur </a></h6>
+                            <p>1x - <span class="price">$80.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="~/Content/Customer/images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Omnes ocurreret</a></h6>
+                            <p>1x - <span class="price">$60.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="~/Content/Customer/images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Agam facilisis</a></h6>
+                            <p>1x - <span class="price">$40.00</span></p>
+                        </li>
+                        <li class="total">
+                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <!-- End Side Menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+    @RenderBody()
+    <!-- Start Footer  -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>About Us</h4>
+                            <p>
+                                The business, which has been around since 2011, has a solid customer base. We take pleasure in supporting every sale with
+                                top-notch customer care and are able to quickly and efficiently meet our customers' demands thanks to our experienced personnel and well-stocked warehouse facility.
+
+                            </p>
+                            <ul>
+                                <li><a target="_blank" href="https://www.facebook.com/profile.php?id=100086607515224"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a target="_blank" href="https://vt.tiktok.com/ZGJfBnC3o/"><i class="fab fa fa-music" aria-hidden="true"></i></a></li>
+                                <li><a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="@Url.Action("About","Home")">About Us</a></li>
+                                <li><a href="@Url.Action("Shop","Home")">Products</a></li>
+        
+                                <li><a href="@Url.Action("Contact","Home")"> Contact Us</a></li>
+                                 <li class="search"><a href="@Url.Action("Login","Home")"><i class="fa fa-user"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>Contact Us</h4>
+                            <ul>
+                                <li>
+                                    <p><i class="fas fa-map-marker-alt"></i>Shop Address: @db.Companies.Select(x => x.COMPANY_ADDRESS).FirstOrDefault() </p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">@db.Companies.Select(x => x.COMPANY_CONTACT).FirstOrDefault()</a></p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">@db.Companies.Select(x=>x.COMPANY_EMAIL).FirstOrDefault()</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer  -->
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">
+            All Rights Reserved. &copy; 2022 <a href="#">Online Shopping Mart</a> Design By : Iqra Saleem
+            <br />
+            Contact Developer On Instagram: <a href="https://www.instagram.com/lqra_rana/"> <i class="fab fa-instagram" aria-hidden="true"></i></a>
+           </p>
+    </div>
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="~/Content/Customer/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/Customer/js/popper.min.js"></script>
+    <script src="~/Content/Customer/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="~/Content/Customer/js/jquery.superslides.min.js"></script>
+    <script src="~/Content/Customer/js/bootstrap-select.js"></script>
+    <script src="~/Content/Customer/js/inewsticker.js"></script>
+    <script src="~/Content/Customer/js/bootsnav.js."></script>
+    <script src="~/Content/Customer/js/images-loded.min.js"></script>
+    <script src="~/Content/Customer/js/isotope.min.js"></script>
+    <script src="~/Content/Customer/js/owl.carousel.min.js"></script>
+    <script src="~/Content/Customer/js/baguetteBox.min.js"></script>
+    <script src="~/Content/Customer/js/form-validator.min.js"></script>
+    <script src="~/Content/Customer/js/contact-form-script.js"></script>
+    <script src="~/Content/Customer/js/custom.js"></script>
+</body>
+
+</html>

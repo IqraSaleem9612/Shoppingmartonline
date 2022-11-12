@@ -1,0 +1,93 @@
+﻿@model OnlineShopeProject.Models.Customer
+
+@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    @if (Session["Customer"] != null)
+    {
+        <div style="padding:100px 100px 100px 100px; width:100%" class="form-horizontal">
+            <h1 style="text-align: center; color: black;  font-family: 'Segoe MDL2 Assets'">Are you sure you want to delete your account? <i class="fa fa-trash"></i></h1>
+            <hr />
+
+
+            <dl class="dl-horizontal">
+                <dt>
+                    <h3>
+                        <b> Name* </b>
+                    </h3>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CUSTOMER_NAME)
+                </dd>
+                <hr />
+
+                <dt>
+                    <h3>
+                        <b> Email* </b>
+                    </h3>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CUSTOMER_EMAIL)
+                </dd>
+                <hr />
+                <dt>
+                    <h3>
+                        <b> Address* </b>
+                    </h3>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CUSTOMER_ADDRESS)
+                </dd>
+                <hr />
+                <dt>
+                    <h3>
+                        <b> Contact* </b>
+                    </h3>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CUSTOMER_CONTACT)
+                </dd>
+                <hr />
+                <dt>
+                    <h3>
+                        <b> Password* </b>
+                    </h3>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CUSTOMER_PASSWORD)
+                </dd>
+                <hr />
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-dark" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        Response.Redirect("/Customers/Login");
+    }
+    </body>
+</html>

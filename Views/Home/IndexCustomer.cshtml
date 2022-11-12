@@ -1,0 +1,337 @@
+﻿@using OnlineShopeProject.Models
+
+@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<!-- Start Slider -->
+
+<div id="slides-shop" class="cover-slides">
+    <ul class="slides-container">
+        <li class="text-center">
+            <img src="~/ProductPicture/pexels-andrea-piacquadio-974911.jpg" alt="" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <h1 class="m-b-20 " style="font-family: Segoe Script"><strong>Welcome To <br>Online Shopping Mart</strong></h1>
+
+
+                        <p><a class="btn btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-left">
+
+
+            <img src="~/ProductPicture/pexels-polinach-11007534 (1).jpg" alt="" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20" style="font-family: Segoe Script"><strong>Women <br>Accessaries </strong></h1>
+
+                        <p><a class="btn  btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-left">
+
+
+            <img src="~/ProductPicture/pexels-yayuk-lestari-4858394.jpg" alt="" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20" style="font-family: Segoe Script; color:white"><strong> Kids Wears <br>& <br />Strationary</strong></h1>
+
+                        <p><a class="btn  btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-left">
+
+
+
+
+            <img src="~/ProductPicture/pexels-vlada-karpovich-7368313.jpg" alt="" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20" style="font-family: Segoe Script"><strong>Luxurious <br />Bags</strong></h1>
+
+                        <p><a class="btn  btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-left">
+
+
+            <img src="~/ProductPicture/pexels-sarah-chai-7262475.jpg" alt="" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20" style="font-family: Segoe Script"><strong>Disposable Items <br><i style="text-align:center">&</i>   <br />Packaging</strong></h1>
+
+                        <p><a class="btn  btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    
+</div>
+<br />
+<br />
+<br />
+<br />
+<!-- End Slider -->
+<!-- Start Categories  -->
+<div class="col-lg-12">
+    <div class="title-all text-center">
+        <h1 style="font-family:Georgia">Shop By Category</h1>
+        <p>We are dealing in Jewellery, bags, disposable items, kids stationary, luggage bags and  alot more.</p>
+    </div>
+</div>
+<div class="categories-shop">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Customer/images/jewelries-6103106_640.jpg" alt="" />
+                    <a class="btn  btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Jewellery</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Customer/images/suitcase-356733_1920.jpg" alt="" />
+                    <a class="btn  btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Bags</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Customer/images/boy-4793110_1920.jpg" alt="" />
+                    <a class="btn  btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Kids Stationary</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Customer/images/paper-cup-1071675_1920.jpg" alt="" />
+                    <a class="btn  btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Disposable Items</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img style="height:235px" ; width="400px" src="~/Content/Customer/images/jar.jpg" class="img-fluid" alt="" />
+
+                    <a class="btn  btn-dark" style="background-color:black" href="@Url.Action("Shop","Home" )">Kitchen Accessaries</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img style="height:235px" ; width="400px" class="img-fluid" src="~/Content/Customer/images/school-supplies-5541102_640.jpg" alt="" />
+                    <a class="btn " style="background-color:black" href="@Url.Action("Shop","Home" )">School Bags</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Categories -->
+<!-- Start Products  -->
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Featured Products</h1>
+                    <p>We don't compromise on quality. Our top selling products are these. Just hit the shop button and make them yours .</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="special-menu text-center">
+                    <div class="button-group filter-button-group">
+                        <button class="active" data-filter="*">All</button>
+                        <button data-filter=".top-featured">Top featured</button>
+                        <button data-filter=".best-seller">Best seller</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row special-list">
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        <div class="type-lb">
+                            <p class="new">New</p>
+                        </div>
+
+                        <img src="~/Content/Customer/images/booties-2047596_1920.jpg" class="img-fluid" alt="Image" />
+                        <div class="mask-icon">
+
+                            <a class="cart" style="background-color:black" href="@Url.Action("Shop","Home" )">Shop Now!</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4 style="font-family: 'Segoe MDL2 Assets'">Kids Wear and Stationary</h4>
+                        <h5 style="color:red"> Starting 500 Rs. </h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 special-grid top-featured">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        <div class="type-lb">
+                            <p class="new">New</p>
+                        </div>
+                        <img src="~/Content/Customer/images/jewel.jpg" class="img-fluid" alt="Image" />
+
+                        <div class="mask-icon">
+
+                            <a class="cart" style="background-color:black" href="@Url.Action("Shop","Home" )">Shop Now!</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4 style="font-family: 'Segoe MDL2 Assets'">Momens Accessaries</h4>
+                        <h5 style="color:red">Starting 999 Rs.</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 special-grid top-featured">
+                <div class="products-single ">
+                    <div class="box-img-hover">
+                        <div class="type-lb">
+                            <p class="new">New</p>
+                        </div>
+                        <img src="~/Content/Customer/images/school.jpg" class="img-fluid" alt="Image" />
+
+                        <div class="mask-icon">
+
+                            <a class="cart" style="background-color:black" href="@Url.Action("Shop","Home" )">Shop Now!</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4 style="font-family: 'Segoe MDL2 Assets'">Bags</h4>
+                        <h5 style="color:red">Starting 999 Rs.</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single ">
+                    <div class="box-img-hover">
+                        <div class="type-lb">
+                            <p class="new">New</p>
+                            @*<p class="sale">Sale</p>*@
+                        </div>
+                        <img src="~/Content/Customer/images/jar.jpg" class="img-fluid" alt="Image" />
+
+                        <div class="mask-icon">
+
+                            <a class="cart" style="background-color:black" href="@Url.Action("Shop","Home" )">Shop Now!</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4 style="font-family: 'Segoe MDL2 Assets'">Kitchen Appliances</h4>
+                        <h5 style="color:red"> Starting 500 Rs.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Products  -->
+<!-- Start Instagram Feed  -->
+<div class="instagram-box">
+    <div class="main-instagram owl-carousel owl-theme">
+        <div class="item">
+            <div class="ins-inner-box">
+
+                <img height="170px" width="220px" src="~/Content/Customer/images/boy-4793110_1920.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+
+                <img height="170px" width="220px" src="~/Content/Customer/images/dining-1809844_1920.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+
+                <img height="170px" width="220px" src="~/Content/Customer/images/jewelries-6103106_640.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+
+                <img height="170px" width="220px" src="~/Content/Customer/images/instagram-img-01.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img height="170px" width="220px" src="~/Content/Customer/images/instagram-img-05.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+
+                <img height="170px" width="220px" src="~/Content/Customer/images/paper-cup-1071675_1920.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+
+                <img height="170px" width="220px" src="~/Content/Customer/images/school-supplies-5541102_640.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img height="170px" width="220px" src="~/Content/Customer/images/instagram-img-08.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+
+                <img height="170px" width="220px" src="~/Content/Customer/images/stainless-878331_1920.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+
+                <img height="170px" width="220px" src="~/Content/Customer/images/students-g9114cad77_1920.jpg" alt="" />
+                <div class="hov-in">
+                    <a target="_blank" href="https://www.instagram.com/onlineshoppingmart119/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Instagram Feed  -->
